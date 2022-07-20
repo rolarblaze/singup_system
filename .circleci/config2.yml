@@ -6,3 +6,18 @@ jobs:
     steps:
       - checkout
       - run: echo "My first hello "
+  
+  build2:
+    docker:
+      - docker: circle/node:4.8.2
+    steps:
+      - checkout
+      - run: echo "Second job running"
+
+#defining a workflow 
+workflows:
+version: 2.1
+  first_and_second:
+    jobs:
+      - build
+      - build2
